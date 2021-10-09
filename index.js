@@ -110,6 +110,7 @@
   let art = ox(isPhoto ? "img" : "video", thumbDiv).attr({
     datasrc: (isPhoto ? "./imgs/" : "./Mis_trabajos/") + f,
     muted: true,
+    preload="metadata",
     onclick(){
       location.hash = f;
     }
@@ -161,7 +162,7 @@
     var f = location.hash.slice(1);
 
     let art = ox(isPhoto ? "img" : "video", backdrop).attr({
-      src: (isPhoto ? "/imgs/" : "Mis_trabajos/") + f,
+      src: (isPhoto ? "./imgs/" : "./Mis_trabajos/") + f,
       muted: true,
       controls: true
     }).css({
