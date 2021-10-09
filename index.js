@@ -90,6 +90,7 @@
  })
  for(let f of files){
   var isPhoto = f.slice(-4).toLowerCase() == ".jpg";
+  var f2 = f;
   f = f.slice(0, f.length-4) + f.slice(-4).toLocaleLowerCase();
 
   var thumbDiv = ox("div", container).css({
@@ -108,11 +109,11 @@
 
   
   let art = ox(isPhoto ? "img" : "video", thumbDiv).attr({
-    datasrc: (isPhoto ? "./imgs/" : "./Mis_trabajos/") + f,
+    datasrc: isPhoto ? "./imgs/" + f : "./Mis_trabajos/" + f2,
     muted: true,
     preload:"metadata",
     onclick(){
-      location.hash = f;
+      location.hash = isPhoto ? f : f2;
     }
   }).css({
     width: "100%",
@@ -162,7 +163,7 @@
     var f = location.hash.slice(1);
 
     let art = ox(isPhoto ? "img" : "video", backdrop).attr({
-      src: (isPhoto ? "./imgs/" : "./Mis_trabajos/") + f,
+      datasrc: isPhoto ? "./imgs/" + f : "./Mis_trabajos/" + f,
       muted: true,
       controls: true
     }).css({
