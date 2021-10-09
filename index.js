@@ -10,7 +10,7 @@
       observer.unobserve(im.target)
     }
  }, {
-   rootMargin:"300px"
+   rootMargin:"400px"
  });
  var headerSize = "7vh";
 
@@ -31,7 +31,7 @@
   maxWidth: "100vmin",
  })
 
- var name = ox("div", headerCont).content("Ana Selenia Hernandez").css({
+ var name = ox("div", headerCont).content("Selenia Hernandez").css({
    cssFloat: "left",
    fontSize: "3vh",
    fontWeight: "300",
@@ -111,7 +111,7 @@
 
   
   let art = ox(isPhoto ? "img" : "video", thumbDiv).attr({
-    datasrc: isPhoto ? "./imgs/" + f : "./Mis_trabajos/" + f2,
+    datasrc: isPhoto ? "./imgsFull/" + f : "./Mis_trabajos/" + f2,
     muted: true,
     preload:"metadata",
     onclick(){
@@ -143,10 +143,12 @@
 
  big();
  var backdrop;
+ var backbtn;
  function big(){
 
   if(backdrop){
     backdrop.remove();
+    backbtn.remove();
     backdrop = null;
     document.body.style.overflow = "scroll";
   } 
@@ -165,13 +167,33 @@
     var f = location.hash.slice(1);
 
     let art = ox(isPhoto ? "img" : "video", backdrop).attr({
-      src: isPhoto ? "./imgs/" + f : "./Mis_trabajos/" + f,
+      src: isPhoto ? "./imgsFull/" + f : "./Mis_trabajos/" + f,
       muted: true,
       controls: true
     }).css({
       width: "100%",
       height: "100%",
       objectFit: isPhoto ? "contain" : "contain"
+    })
+
+    
+    backbtn = ox("i").attr({
+      className: "fa fa-chevron-left",
+      onclick(){
+        history.back();
+      }
+    }).css({
+      fontSize: "2.5em",
+      color: "#FFF",
+      backgroundColor: "#AAA",
+      position: "fixed",
+      left: "10px",
+      padding: "7px 5px 0 0",
+      width: "1.25em",
+      height: "1.25em",
+      borderRadius: "50%",
+      textAlign: "center",
+      top: "calc(10px + " + headerSize + ")",
     })
 
   }
