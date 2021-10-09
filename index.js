@@ -100,7 +100,7 @@
 
   
   let art = ox(isPhoto ? "img" : "video", thumbDiv).attr({
-    src: (isPhoto ? "/imgs/" : "Mis_trabajos/") + f,
+    src: (isPhoto ? "./imgs/" : "./Mis_trabajos/") + f,
     muted: true,
     onclick(){
       location.hash = f;
@@ -117,7 +117,8 @@
       position: "absolute",
       top: "50%",
       left: "50%",
-      transform: "translate(-50%, -50%) scale(0.5)"
+      transform: "translate(-50%, -50%) scale(0.5)",
+      pointerEvents: "none"
     }).attr({
       src: "./assets/play.png",
     })
