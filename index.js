@@ -110,8 +110,8 @@
   });
 
   
-  let art = ox(isPhoto ? "img" : "video", thumbDiv).attr({
-    datasrc: isPhoto ? "./imgsFull/" + f : "./Mis_trabajos/" + f2,
+  let art = ox("img", thumbDiv).attr({
+    datasrc: "./Mis_trabajos/thumbs/" + f2 + ".jpg",
     muted: true,
     preload:"metadata",
     onclick(){
@@ -171,9 +171,10 @@
       muted: true,
       controls: true,
       autoplay: true,
+      playsinline: true
     }).css({
       width: "100%",
-      height: "100%",
+      height: "calc(100% - " + headerSize + ")",
       objectFit: isPhoto ? "contain" : "contain"
     })
 
