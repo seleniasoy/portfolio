@@ -169,7 +169,8 @@
     let art = ox(isPhoto ? "img" : "video", backdrop).attr({
       src: isPhoto ? "./imgsFull/" + f : "./Mis_trabajos/" + f,
       muted: true,
-      controls: true
+      controls: true,
+      autoplay: true,
     }).css({
       width: "100%",
       height: "100%",
