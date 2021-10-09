@@ -90,7 +90,7 @@
  })
  for(let f of files){
   var isPhoto = f.slice(-4).toLowerCase() == ".jpg";
-  var f2 = f;
+  let f2 = f;
   f = f.slice(0, f.length-4) + f.slice(-4).toLocaleLowerCase();
 
   var thumbDiv = ox("div", container).css({
