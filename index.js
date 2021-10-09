@@ -150,10 +150,12 @@
     backdrop.remove();
     backbtn.remove();
     backdrop = null;
-    document.body.style.overflow = "scroll";
+    if(!mobile)
+      document.body.style.overflow = "scroll";
   } 
   if(location.hash.length > 5){
-    document.body.style.overflow = "hidden";
+    if(!mobile)
+      document.body.style.overflow = "hidden";
     var isPhoto = location.hash.slice(-4).toLowerCase() == ".jpg";
     backdrop = ox("div").css({
       backgroundColor: "#FFF",
