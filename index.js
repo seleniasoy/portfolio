@@ -178,6 +178,12 @@
       objectFit: isPhoto ? "contain" : "contain"
     })
 
+    if(!isPhoto){
+      art.setAttribute("playsinline", true);
+      art.setAttribute("muted", true);
+      art.setAttribute("autoplay", true);
+    }
+
     
     backbtn = ox("i").attr({
       className: "fa fa-chevron-left",
