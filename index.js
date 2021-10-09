@@ -2,7 +2,14 @@
  var files = ['-4776241293166500176.MP4', '-4787076953767120870.MP4', '0b9e0e1e-ab45-4186-bc9d-06bd8b4dc409.MP4', '2001a36f-72da-4385-a31a-ee0dfa0142ae.JPG', '20180311_164105_Original.jpg', '20180819_180130_Original.jpg', '2df2504a-9315-46ea-b2e1-d07d56bdd227.JPG', '3554786b-48b4-451b-a836-1d43f007fcff.JPG', '445e6c38-42ca-4676-ae15-f4575c526a27.JPG', '56e29355-ee58-4736-88cf-295fdf5318b3.JPG', '588fe6ce-b30a-4a9f-b67d-828edd53a989.JPG', '63fb9520-2638-45b8-a547-6d32f217f17c.JPG', '70926ef6-e9e2-4ef9-9cd0-5a67428235a1.JPG', '896FB981-A08A-46C4-96B6-87A636308B73.MOV', '9080307452926671021.MP4', 'fb157b7e-09b6-4a05-bc98-7ca4ece27f2f.JPG', 'IMG-20190325-WA0035_Original.jpg', 'IMG_1205.JPG', 'IMG_1207.JPG', 'IMG_1208.JPG', 'IMG_1209.JPG', 'IMG_1210.JPG', 'IMG_1212.JPG', 'IMG_1213.JPG', 'IMG_1214.JPG', 'IMG_1215.JPG', 'IMG_1216.JPG', 'IMG_1217.JPG', 'IMG_1270.JPG', 'IMG_1271.JPG', 'IMG_1721.jpg', 'IMG_1723.jpg', 'IMG_3103.JPG', 'IMG_3104.JPG', 'IMG_3105.JPG', 'IMG_3106.JPG', 'IMG_3107.JPG', 'IMG_3108.JPG', 'IMG_3109.JPG', 'IMG_3110.JPG', 'IMG_3111.JPG', 'IMG_3112.JPG', 'IMG_3113.JPG', 'IMG_3114.JPG', 'IMG_3115.JPG', 'IMG_3116.JPG', 'IMG_3117.JPG', 'IMG_3118.JPG', 'IMG_3119.JPG', 'IMG_3120.JPG', 'IMG_3121.JPG', 'IMG_3122.JPG', 'IMG_3123.JPG', 'IMG_3124.JPG', 'IMG_3125.JPG', 'IMG_3126.JPG', 'IMG_3194_Original.jpg', 'RPReplay_Final1627703268.mov', 'RPReplay_Final1628096809.mov'];
 
  var mobile = innerHeight > innerWidth;
- 
+
+ var observer = new IntersectionObserver((elms)=>{
+    var visibles = elms.filter(d=> d.isIntersecting)
+    for(const im of visibles){
+      im.target.src = im.target.datasrc;
+      observer.unobserve(im.target)
+    }
+ });
  var headerSize = "7vh";
 
  var header = ox("div").css({
@@ -100,7 +107,7 @@
 
   
   let art = ox(isPhoto ? "img" : "video", thumbDiv).attr({
-    src: (isPhoto ? "./imgs/" : "./Mis_trabajos/") + f,
+    datasrc: (isPhoto ? "./imgs/" : "./Mis_trabajos/") + f,
     muted: true,
     onclick(){
       location.hash = f;
@@ -111,6 +118,8 @@
     objectFit: isPhoto ? "contain" : "contain",
     transform: "scale(1.1)"
   })
+
+  observer.observe(art)
 
   if(!isPhoto){
     ox("img", thumbDiv).css({
