@@ -89,11 +89,11 @@
 
  })
  for(let f of files){
-  var isPhoto = f.slice(-4).toLowerCase() == ".jpg";
+  let isPhoto = f.slice(-4).toLowerCase() == ".jpg";
   let f2 = f;
   f = f.slice(0, f.length-4) + f.slice(-4).toLocaleLowerCase();
 
-  var thumbDiv = ox("div", container).css({
+  let thumbDiv = ox("div", container).css({
     //border: "solid 3px #FFF",
     //border: "1px solid rgba(219,219,219,1)",
     backgroundColor: "#DDD",
