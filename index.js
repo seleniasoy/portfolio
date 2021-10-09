@@ -158,7 +158,7 @@
     backdrop = ox("div").css({
       backgroundColor: "#FFF",
       width: "100vw",
-      height:"calc(100vh - " + headerSize +")",
+      height:"calc(100% - " + headerSize +")",
       position: "fixed",
       top: headerSize,
       left: "0",
@@ -174,7 +174,7 @@
       playsinline: true
     }).css({
       width: "100%",
-      height: "calc(100% - " + headerSize + ")",
+      height: "100%",
       objectFit: isPhoto ? "contain" : "contain"
     })
 
