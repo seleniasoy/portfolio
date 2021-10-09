@@ -110,7 +110,7 @@
   let art = ox(isPhoto ? "img" : "video", thumbDiv).attr({
     datasrc: (isPhoto ? "./imgs/" : "./Mis_trabajos/") + f,
     muted: true,
-    preload="metadata",
+    preload:"metadata",
     onclick(){
       location.hash = f;
     }
