@@ -64,7 +64,10 @@
  })
 
  var headerRight = ox("div", headerCont).css({
-   cssFloat: "right"
+   backgroundColor: "white",
+   paddingLeft: "10px",
+   right: "0",
+   position: "absolute"
  });
 
  var imdb = ox("i", headerRight).attr({
@@ -165,10 +168,12 @@
 
  big();
  var backdrop;
+ var loading;
  function big(){
 
   if(backdrop){
     backdrop.remove();
+    //loading.remove();
     backdrop = null;
     document.body.style.overflow = "scroll";
   } 
@@ -188,6 +193,27 @@
       left: "0",
     })
 
+    
+    loading = ox("i", backdrop).attr({
+      className: "fa fa-spinner",
+    }).css({
+      fontSize: "20vw",
+      position: "absolute",
+      top: "calc(calc(50% - 10vw))",
+      left: "calc(50% - 10vw)",
+      zIndex: "-1",
+      color: "#222",
+
+
+    }).anim({
+      from: {
+        transform: "rotate(0)"
+      },
+      to: {
+        transform: "rotate(360deg)"
+      }
+    }, "1.5s infinite linear")
+
     var f = location.hash.slice(1);
 
     let art = ox(isPhoto ? "img" : "video", backdrop).attr({
@@ -199,6 +225,7 @@
     }).css({
       width: "100%",
       height: "100%",
+      zIndex: "5",
       objectFit: isPhoto ? "contain" : "contain"
     })
 
