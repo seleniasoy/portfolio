@@ -31,6 +31,28 @@
   maxWidth: "100vmin",
  })
 
+ var backb = ox("i", headerCont).attr({
+   className: "fa fa-arrow-left",
+   onclick(){
+     history.back();
+     backb.css({
+       display: "none"
+     })
+   }
+  }).css({
+    height: "100%",
+    verticalAlign: "middle",
+    background: "#AAA",
+    display: "block",
+    padding: "1vh",
+    fontSize: "3vh",
+    marginRight: "10px",
+    cssFloat: "left",
+    color: "white",
+    borderRadius: "5px",
+    display: "none"
+  }
+ )
  var name = ox("div", headerCont).content("Selenia Hernandez").css({
    cssFloat: "left",
    fontSize: "3vh",
@@ -143,19 +165,19 @@
 
  big();
  var backdrop;
- var backbtn;
  function big(){
 
   if(backdrop){
     backdrop.remove();
-    backbtn.remove();
     backdrop = null;
-    if(!mobile)
-      document.body.style.overflow = "scroll";
+    document.body.style.overflow = "scroll";
   } 
   if(location.hash.length > 5){
-    if(!mobile)
-      document.body.style.overflow = "hidden";
+    
+  backb.css({
+    display: "block"
+  })
+    document.body.style.overflow = "hidden";
     var isPhoto = location.hash.slice(-4).toLowerCase() == ".jpg";
     backdrop = ox("div").css({
       backgroundColor: "#FFF",
@@ -185,26 +207,6 @@
       art.setAttribute("muted", true);
       art.setAttribute("autoplay", true);
     }
-
-    
-    backbtn = ox("i").attr({
-      className: "fa fa-chevron-left",
-      onclick(){
-        history.back();
-      }
-    }).css({
-      fontSize: "2.5em",
-      color: "#FFF",
-      backgroundColor: "#AAA",
-      position: "fixed",
-      left: "10px",
-      padding: "7px 5px 0 0",
-      width: "1.25em",
-      height: "1.25em",
-      borderRadius: "50%",
-      textAlign: "center",
-      top: "calc(10px + " + headerSize + ")",
-    })
 
   }
   
